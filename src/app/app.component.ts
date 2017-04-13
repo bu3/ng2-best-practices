@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {CountryService} from "./countries/country.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
+  ready = false;
+
+  countryCode:string = 'IT';
+
+  constructor(countryService: CountryService) {
+    countryService.init().subscribe(()=> this.ready = true)
+  }
 }
